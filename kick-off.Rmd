@@ -1,0 +1,246 @@
+---
+title: "1. Introduction - Cédric Scherer - Data Visualization with ggplot2"
+author: "Cédric Scherer"
+institute: "" #Leibniz Institute for Zoo and Wildlife Research Berlin
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: ["./css/fonts.css", "./css/style.css", "./css/kunoichi-blank.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      slideNumberFormat:  |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+      ratio: '16:9'
+---
+
+```{r options, echo = FALSE}
+hook_source <- knitr::knit_hooks$get('source')
+knitr::knit_hooks$set(source = function(x, options) {
+  x <- stringr::str_replace(x, "^[[:blank:]]?([^*].+?)[[:blank:]]*#<<[[:blank:]]*$", "*\\1")
+  hook_source(x, options)
+})
+
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  warning = FALSE, 
+  message = FALSE, 
+  collapse = TRUE,
+  fig.height = 6.3,
+  fig.allign = 'center',
+  fig.retina = 3.5,
+  fig.showtext = TRUE
+)
+
+options(width = 80)
+```
+
+<style>
+.left-column { width:26%; }
+.right-column { width:67%; }
+</style>
+
+<div id="content">
+    <img src="img/cedric_dots_filled_color_Viridis2.png" class="ribbon"/ style='width:40%;'>
+</div>
+<br>
+<b style='color:gray;font-family:zilla slab;font-size:24pt;font-weight:bold;'>Scientist by 🎓</b>
+<br>
+<span style='font-size:13pt;'>&rarr;&nbsp;&nbsp;population and community dynamics, movement ecology, wildlife diseases
+
+* <b style='color:#28a87d;'>M.Sc. in <i>Ecology, Evolution & Nature Conservation</i></b><br>
+<i style='font-size:12pt;color:grey;'>University of Potsdam&nbsp;&nbsp;2011–2014</i>
+
+* <b style='color:#28a87d;'>Ph.D. in <i>Ecology</i></b><br>
+<i style='font-size:12pt;color:grey;'>Research Training Group "BioMove"&nbsp;&nbsp;2015–2019</i>
+
+* <b style='color:#28a87d;'>PostDoc in <i>Computational Ecology</i></b><br>
+<i style='font-size:12pt;color:grey;'>Leibniz Institute for Zoo and Wildlife Research (IZW)&nbsp;&nbsp;2019–</i>
+
+<br>
+<b style='color:gray;font-family:zilla slab;font-size:24pt;font-weight:bold;'>DataViz Specialist by ❤️</b>
+<br>
+<span style='font-size:13pt;'>&rarr;&nbsp;&nbsp;analysist, designer, consultant, workshop instructor
+
+* <b style='color:#28a87d;'>Freelancing Data Visualization Designer</i></b><br>
+
+* <b style='color:#28a87d;'>Data Challenges and Personal Projects</i></b><br>
+<i style='font-size:12pt;color:gray;'>#TidyTuesday, #30DayMapChallenge, #MakeoverMonday, #SWDchallenge</i>
+
+---
+class: center
+background-image: url("img/rtidy2.png")
+background-size: contain
+
+#### <h4 style='color:gray;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scientist by 🎓&nbsp;&nbsp;&nbsp;DataViz Specialist by ❤️ </h4>
+
+---
+class: inverse, center
+
+### Data Visualizations for Scientific Publications & Talks
+
+.pull-left[
+<br>
+<p style='text-align:center;'><img src="img/Fig2_disease-data_full_log.png" style='width:86%;'><br><i style='color:lightgrey;font-size:10pt;'><i>Scherer et al. 2019 Journal of Animal Ecology</i></p>
+]
+
+.pull-right[
+<br><br>
+<p style='text-align:center;'><img src="img/SwiFCoIBMove_density.png" style='width:92%;'><br><i style='color:lightgrey;font-size:10pt;'>Scherer et al. 2020 Oikos</i></p>
+<p style='text-align:center;'><img src="img/NLMR_case_study.png" style='width:92%;'><br><i style='color:lightgrey;font-size:10pt;'>Sciaini et al. 2019 Methods in Ecology & Evolution</i></p>
+]
+
+---
+class: inverse, center
+
+### Data Visualizations for Client Projects
+
+.pull-left[
+<p style='text-align:right;'><img src="img/InvMapUS_final_FjallaOne.gif" style='width: 78%;'></p>
+<p style='text-align:right;'><img src="img/11_1_solidaritaet_erstattung_id_1.png" style='width: 78%;'></p>
+]
+
+.pull-right[
+<p style='text-align:center;'><img src="img/3_time_eandy_highlight_1.png" style='width: 78%;'></p>
+<p style='text-align:center;'><img src="img/ddh_ridges.png" style='width: 78%;'></p>
+]
+
+---
+class: inverse, center
+
+### Data Visualizations as Challenge Contributions 
+
+<br>
+.pull-left[
+<p style='text-align:center;'><img src="img/20200630_TT_2020_27_Xmen_annotated.png" style='width: 92%;'><br><i style='color:lightgrey;font-size:10pt;'>Contribution to #TidyTuesday</i></p>
+]
+
+.pull-right[
+<p style='text-align:center;'><img src="img/03_Polygons_GlobalMortality.png" style='width: 100%;'><br><i style='color:lightgrey;font-size:10pt;'>Contribution to #30DayMapChallenge</i></p>
+]
+
+---
+class: inverse, center, middle
+
+# <b style='font-size:70pt;'>The <code style='color:#ebc500;'>ggplot2</code> Showcase</b><br><br>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/bbc-gallery.png" style='width:100%;'><br><i style='color:lightgrey;font-size:10pt;'>Collection of BBC Graphics<br><span style='color:grey;font-size:8pt;'>(modified from bbc.github.io/rcookbook)</span></i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/2020_31_PalmerPenguins.png" style='width:33%;'>
+<br><i style='color:lightgrey;font-size:10pt;'>Contribution to #TidyTuesday 2020/31</i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/europe_sprengler.jpeg" style='width:49%;'><br><i style='color:lightgrey;font-size:10pt;'>European Elections by Torsten Sprenger<br><span style='color:grey;font-size:8pt;'>(twitter.com/spren9er/status/1138000009306234880)</span></i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/2020_46_HistoricalPhones.png" style='width:68%;'>
+<br><i style='color:lightgrey;font-size:10pt;'>Contribution to #TidyTuesday 2020/46</i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/jake_bird_collisions.png" style='width:81%;'>
+<br><i style='color:lightgrey;font-size:10pt;'>#TidyTuesday Contribution by Jake Kaupp<br><span style='color:grey;font-size:8pt;'>(github.com/jkaupp/tidytuesdays)</span></i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/2020_41_NCAAWomensBasketball.png" style='width:58%;'>
+<br><i style='color:lightgrey;font-size:10pt;'>Contribution to #TidyTuesday 2020/41</i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/2020_28_CoffeeRatings.png" style='width:73%;'>
+<br><i style='color:lightgrey;font-size:10pt;'>Contribution to #TidyTuesday 2020/28</i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/SWD_2020_01_SmallMultiples_grey.png" style='width:100%;'><br><i style='color:lightgrey;font-size:10pt;'>Contribution to #SWDchallenge</i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/georgios_bob_ross.png" style='width:80%;'><br><i style='color:lightgrey;font-size:10pt;'>#TidyTuesday Contribution by Georgios Karamanis<br><span style='color:grey;font-size:8pt;'>(github.com/gkaramanis/tidytuesday)</span></i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/swiss_map.png" style='width:66%;'><br><i style='color:lightgrey;font-size:10pt;'>Bivariate Map by Timo Gossenbacher<br><span style='color:grey;font-size:8pt;'>(timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf)</span></i></p>
+
+---
+class: inverse, center, middle
+
+<p style='text-align:center;'><img src="img/showcase/BuiltEnv_BerlinBuildings.png" style='width:66%;'><br><i style='color:lightgrey;font-size:10pt;'>Contribution to the #30DayMapChallenge<br></p>
+
+---
+class: inverse, center, middle
+
+.pull-left[
+<p style='text-align:center;'><img src="img/showcase/gganimate-hurricane.gif" style='width:73%;'><br><i style='color:lightgrey;font-size:10pt;'>Example of the {gganimate} Package<br><span style='color:grey;font-size:8pt;'>(github.com/thomasp85/gganimate/wiki)</span></i></p>
+]
+
+.pull-right[
+<p style='text-align:center;'><img src="img/showcase/2019_42_BigCars_Highway.gif" style='width:100%;'><br><i style='color:lightgrey;font-size:10pt;'>Contribution to #TidyTuesday</i></p>
+]
+
+---
+class: inverse, center
+
+#### cedricscherer.netlify.com
+
+<p style='text-align:center;'><img src="img/blog.png" style='width:48%;'>
+
+---
+class: inverse, center
+
+.pull-left[
+<p style='text-align:center;'><img src="img/blog-tutorial.png" style='width:77%;'></p>
+]
+
+.pull-right[
+<p style='text-align:center;'><img src="img/blog-evol.png" style='width:77%;'></p>
+]
+
+---
+class: inverse, center
+
+#### github.com/Z3tt
+
+<p style='text-align:center;'><img src="img/github.png" style='width:52%;'>
+
+---
+class: inverse, center
+
+#### github.com/Z3tt/TidyTuesday
+
+<p style='text-align:center;'><img src="img/github_tidytuesday.png" style='width:52%;'>
+
+---
+class: inverse, center
+
+#### github.com/Z3tt/TidyTuesday/R/...
+
+<p style='text-align:center;'><img src="img/github_tidytuesday_codes.png" style='width:52%;'>
+
+---
+class: center, middle
+
+<img src="img/ah_ggplot2_masterpiece.png" style='width:71%;'><br><i style='font-size:10pt;color:grey;'>Illustration by <a href='github.com/allisonhorst/stats-illustrations'>Allison Horst</a></i>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>1. Introduction - Cédric Scherer - Data Visualization with ggplot2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Cédric Scherer" />
+    <meta name="date" content="2020-12-22" />
+    <link rel="stylesheet" href="css\fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css\style.css" type="text/css" />
+    <link rel="stylesheet" href="css\kunoichi-blank.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+&lt;style&gt;
+.left-column { width:26%; }
+.right-column { width:67%; }
+&lt;/style&gt;
+
+&lt;div id="content"&gt;
+    &lt;img src="img/cedric_dots_filled_color_Viridis2.png" class="ribbon"/ style='width:40%;'&gt;
+&lt;/div&gt;
+&lt;br&gt;
+&lt;b style='color:gray;font-family:zilla slab;font-size:24pt;font-weight:bold;'&gt;Scientist by 🎓&lt;/b&gt;
+&lt;br&gt;
+&lt;span style='font-size:13pt;'&gt;&amp;rarr;&amp;nbsp;&amp;nbsp;population and community dynamics, movement ecology, wildlife diseases
+
+* &lt;b style='color:#28a87d;'&gt;M.Sc. in &lt;i&gt;Ecology, Evolution &amp; Nature Conservation&lt;/i&gt;&lt;/b&gt;&lt;br&gt;
+&lt;i style='font-size:12pt;color:grey;'&gt;University of Potsdam&amp;nbsp;&amp;nbsp;2011–2014&lt;/i&gt;
+
+* &lt;b style='color:#28a87d;'&gt;Ph.D. in &lt;i&gt;Ecology&lt;/i&gt;&lt;/b&gt;&lt;br&gt;
+&lt;i style='font-size:12pt;color:grey;'&gt;Research Training Group "BioMove"&amp;nbsp;&amp;nbsp;2015–2019&lt;/i&gt;
+
+* &lt;b style='color:#28a87d;'&gt;PostDoc in &lt;i&gt;Computational Ecology&lt;/i&gt;&lt;/b&gt;&lt;br&gt;
+&lt;i style='font-size:12pt;color:grey;'&gt;Leibniz Institute for Zoo and Wildlife Research (IZW)&amp;nbsp;&amp;nbsp;2019–&lt;/i&gt;
+
+&lt;br&gt;
+&lt;b style='color:gray;font-family:zilla slab;font-size:24pt;font-weight:bold;'&gt;DataViz Specialist by ❤️&lt;/b&gt;
+&lt;br&gt;
+&lt;span style='font-size:13pt;'&gt;&amp;rarr;&amp;nbsp;&amp;nbsp;analysist, designer, consultant, workshop instructor
+
+* &lt;b style='color:#28a87d;'&gt;Freelancing Data Visualization Designer&lt;/i&gt;&lt;/b&gt;&lt;br&gt;
+
+* &lt;b style='color:#28a87d;'&gt;Data Challenges and Personal Projects&lt;/i&gt;&lt;/b&gt;&lt;br&gt;
+&lt;i style='font-size:12pt;color:gray;'&gt;#TidyTuesday, #30DayMapChallenge, #MakeoverMonday, #SWDchallenge&lt;/i&gt;
+
+---
+class: center
+background-image: url("img/rtidy2.png")
+background-size: contain
+
+#### &lt;h4 style='color:gray;'&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Scientist by 🎓&amp;nbsp;&amp;nbsp;&amp;nbsp;DataViz Specialist by ❤️ &lt;/h4&gt;
+
+---
+class: inverse, center
+
+### Data Visualizations for Scientific Publications &amp; Talks
+
+.pull-left[
+&lt;br&gt;
+&lt;p style='text-align:center;'&gt;&lt;img src="img/Fig2_disease-data_full_log.png" style='width:86%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;&lt;i&gt;Scherer et al. 2019 Journal of Animal Ecology&lt;/i&gt;&lt;/p&gt;
+]
+
+.pull-right[
+&lt;br&gt;&lt;br&gt;
+&lt;p style='text-align:center;'&gt;&lt;img src="img/SwiFCoIBMove_density.png" style='width:92%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Scherer et al. 2020 Oikos&lt;/i&gt;&lt;/p&gt;
+&lt;p style='text-align:center;'&gt;&lt;img src="img/NLMR_case_study.png" style='width:92%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Sciaini et al. 2019 Methods in Ecology &amp; Evolution&lt;/i&gt;&lt;/p&gt;
+]
+
+---
+class: inverse, center
+
+### Data Visualizations for Client Projects
+
+.pull-left[
+&lt;p style='text-align:right;'&gt;&lt;img src="img/InvMapUS_final_FjallaOne.gif" style='width: 78%;'&gt;&lt;/p&gt;
+&lt;p style='text-align:right;'&gt;&lt;img src="img/11_1_solidaritaet_erstattung_id_1.png" style='width: 78%;'&gt;&lt;/p&gt;
+]
+
+.pull-right[
+&lt;p style='text-align:center;'&gt;&lt;img src="img/3_time_eandy_highlight_1.png" style='width: 78%;'&gt;&lt;/p&gt;
+&lt;p style='text-align:center;'&gt;&lt;img src="img/ddh_ridges.png" style='width: 78%;'&gt;&lt;/p&gt;
+]
+
+---
+class: inverse, center
+
+### Data Visualizations as Challenge Contributions 
+
+&lt;br&gt;
+.pull-left[
+&lt;p style='text-align:center;'&gt;&lt;img src="img/20200630_TT_2020_27_Xmen_annotated.png" style='width: 92%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Contribution to #TidyTuesday&lt;/i&gt;&lt;/p&gt;
+]
+
+.pull-right[
+&lt;p style='text-align:center;'&gt;&lt;img src="img/03_Polygons_GlobalMortality.png" style='width: 100%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Contribution to #30DayMapChallenge&lt;/i&gt;&lt;/p&gt;
+]
+
+---
+class: inverse, center, middle
+
+# &lt;b style='font-size:70pt;'&gt;The &lt;code style='color:#ebc500;'&gt;ggplot2&lt;/code&gt; Showcase&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/bbc-gallery.png" style='width:100%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Collection of BBC Graphics&lt;br&gt;&lt;span style='color:grey;font-size:8pt;'&gt;(modified from bbc.github.io/rcookbook)&lt;/span&gt;&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/2020_31_PalmerPenguins.png" style='width:33%;'&gt;
+&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Contribution to #TidyTuesday 2020/31&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/europe_sprengler.jpeg" style='width:49%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;European Elections by Torsten Sprenger&lt;br&gt;&lt;span style='color:grey;font-size:8pt;'&gt;(twitter.com/spren9er/status/1138000009306234880)&lt;/span&gt;&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/2020_46_HistoricalPhones.png" style='width:68%;'&gt;
+&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Contribution to #TidyTuesday 2020/46&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/jake_bird_collisions.png" style='width:81%;'&gt;
+&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;#TidyTuesday Contribution by Jake Kaupp&lt;br&gt;&lt;span style='color:grey;font-size:8pt;'&gt;(github.com/jkaupp/tidytuesdays)&lt;/span&gt;&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/2020_41_NCAAWomensBasketball.png" style='width:58%;'&gt;
+&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Contribution to #TidyTuesday 2020/41&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/2020_28_CoffeeRatings.png" style='width:73%;'&gt;
+&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Contribution to #TidyTuesday 2020/28&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/SWD_2020_01_SmallMultiples_grey.png" style='width:100%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Contribution to #SWDchallenge&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/georgios_bob_ross.png" style='width:80%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;#TidyTuesday Contribution by Georgios Karamanis&lt;br&gt;&lt;span style='color:grey;font-size:8pt;'&gt;(github.com/gkaramanis/tidytuesday)&lt;/span&gt;&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/swiss_map.png" style='width:66%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Bivariate Map by Timo Gossenbacher&lt;br&gt;&lt;span style='color:grey;font-size:8pt;'&gt;(timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf)&lt;/span&gt;&lt;/i&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/BuiltEnv_BerlinBuildings.png" style='width:66%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Contribution to the #30DayMapChallenge&lt;br&gt;&lt;/p&gt;
+
+---
+class: inverse, center, middle
+
+.pull-left[
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/gganimate-hurricane.gif" style='width:73%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Example of the {gganimate} Package&lt;br&gt;&lt;span style='color:grey;font-size:8pt;'&gt;(github.com/thomasp85/gganimate/wiki)&lt;/span&gt;&lt;/i&gt;&lt;/p&gt;
+]
+
+.pull-right[
+&lt;p style='text-align:center;'&gt;&lt;img src="img/showcase/2019_42_BigCars_Highway.gif" style='width:100%;'&gt;&lt;br&gt;&lt;i style='color:lightgrey;font-size:10pt;'&gt;Contribution to #TidyTuesday&lt;/i&gt;&lt;/p&gt;
+]
+
+---
+class: inverse, center
+
+#### cedricscherer.netlify.com
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/blog.png" style='width:48%;'&gt;
+
+---
+class: inverse, center
+
+.pull-left[
+&lt;p style='text-align:center;'&gt;&lt;img src="img/blog-tutorial.png" style='width:77%;'&gt;&lt;/p&gt;
+]
+
+.pull-right[
+&lt;p style='text-align:center;'&gt;&lt;img src="img/blog-evol.png" style='width:77%;'&gt;&lt;/p&gt;
+]
+
+---
+class: inverse, center
+
+#### github.com/Z3tt
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/github.png" style='width:52%;'&gt;
+
+---
+class: inverse, center
+
+#### github.com/Z3tt/TidyTuesday
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/github_tidytuesday.png" style='width:52%;'&gt;
+
+---
+class: inverse, center
+
+#### github.com/Z3tt/TidyTuesday/R/...
+
+&lt;p style='text-align:center;'&gt;&lt;img src="img/github_tidytuesday_codes.png" style='width:52%;'&gt;
+
+---
+class: center, middle
+
+&lt;img src="img/ah_ggplot2_masterpiece.png" style='width:71%;'&gt;&lt;br&gt;&lt;i style='font-size:10pt;color:grey;'&gt;Illustration by &lt;a href='github.com/allisonhorst/stats-illustrations'&gt;Allison Horst&lt;/a&gt;&lt;/i&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"slideNumberFormat": "<div class=\"progress-bar-container\">   <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">   </div> </div> ",
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
